@@ -5,14 +5,18 @@ from typing import List, Dict, Optional
 CATEGORY_DIR = "data/categorized"
 OUTPUT_FILE = "data/selected_articles.json"
 
-FILES = [
-    "global_General Tech & Startups.json",
-    "global_Applied AI & FinTech.json",
-    "global_Blockchain & Crypto.json",
-    "east asia_General Tech & Startups.json",
-    "east asia_Applied AI & FinTech.json",
-    "east asia_Blockchain & Crypto.json",
+# These should mirror the values used in ``classify_articles_gpt.py`` to
+# avoid mismatches in capitalization or spacing when reading the files.
+REGIONS = ["Global", "East Asia"]
+CATEGORIES = [
+    "General Tech & Startups",
+    "Applied AI & FinTech",
+    "Blockchain & Crypto",
 ]
+
+# Build the expected file list dynamically so changes in ``REGIONS`` or
+# ``CATEGORIES`` are automatically reflected here.
+FILES = [f"{region}_{cat}.json" for region in REGIONS for cat in CATEGORIES]
 
 def load_json(path: str) -> List[Dict]:
     if not os.path.exists(path):
