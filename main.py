@@ -5,7 +5,7 @@ from datetime import datetime
 
 # Define all steps and expected output files
 STEPS = [
-    ("fetch_newsapi_ai.py", "data/newsapi_ai_articles.json"),
+    
     ("fetch_rss_articles.py", "data/rss_articles.json"),
     ("filter_articles_by_date.py", "data/recent_articles.json"),
     ("filter_relevance_gpt.py", "data/classified_articles.json"),
